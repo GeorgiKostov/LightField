@@ -10,6 +10,7 @@ public class AudioManager : AManager<AudioManager>
     public static float[] Samples = new float[512];
     public static float[] FreqBand = new float[8];
     public bool MicOn;
+
     void Start()
     {
         audio = GetComponent<AudioSource>();
