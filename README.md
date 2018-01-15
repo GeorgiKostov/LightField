@@ -16,21 +16,38 @@ F2 - Decrease Random Time
 
 -ANIMATIONS-
 
-Q -            CircleClockwise();
-W -            CircleCounterClock();
-E -            ClockPattern();
-A -            LeftRight();
-S -            RightLeft();
-D -            PosDownUp();
-F -            PosUpDown();
-G -            ScaleUpDown();
-H -            ScaleDownUp();
-J -            SpawnRainbow();
-K -            SpawnParticles_1();
-L -            SpawnParticles_2();
-Z -            InitBeamY();
-X -            InitBeamX();
-C -            InitColorBalls();
-V -            Init_Shape_Square_Anim1();
-B-             Init_Shape_Square_Anim2();
-N -            Init_Shape_Circle();
+Q CircleClockwise(); 
+
+W CircleCounterClock(); 
+
+E ClockPattern(); 
+
+A LeftRight(); 
+
+S RightLeft(); 
+
+D PosDownUp();
+
+F PosUpDown();
+
+G ScaleUpDown();
+
+H ScaleDownUp();
+
+J SpawnRainbow();
+
+K SpawnParticles_1();
+
+L SpawnParticles_2();
+
+Z InitBeamY();
+
+X InitBeamX();
+
+C InitColorBalls();
+
+V Init_Shape_Square_Anim1();
+
+B Init_Shape_Square_Anim2();
+
+N Init_Shape_Circle();
