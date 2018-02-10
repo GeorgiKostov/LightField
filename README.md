@@ -9,15 +9,15 @@ Key Shortcuts:
 
 R - Restart
 
-F3 - Turn Off Randomizer (there will be no next random animation after current finishes)
+F1 - Turn OFF Randomizer (there will be no next random animation after current finishes)
 
-M - Surn ON Randomizer
+F2 - Turn ON Randomizer
 
 ESC - Quit
 
-F1 - Increase Random Time
+F7 - Increase Random Time
 
-F2 - Decrease Random Time
+F6 - Decrease Random Time
 
 -ANIMATIONS-
 
@@ -26,6 +26,12 @@ Q CircleClockwise();
 W CircleCounterClock(); 
 
 E ClockPattern(); 
+
+T SpawnAnimTex1(); 
+
+Y SpawnAnimTex2(); 
+
+U SpawnAnimTex3(); 
 
 A LeftRight(); 
 
