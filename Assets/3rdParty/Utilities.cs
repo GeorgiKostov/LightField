@@ -128,4 +128,35 @@ public static class Utilities
 		return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
 	}
 	#endregion
+
+    public static Color GetRandomColor()
+    {
+        int randomColor =  RandomInt(0, 7);
+        Color newColor = new Color();
+        switch (randomColor)
+        {
+            case 0:
+                newColor= Color.red;
+                break;
+            case 1:
+                newColor = Color.blue;
+                break;
+            case 2:
+                newColor = Color.cyan;
+                break;
+            case 3:
+                newColor = Color.magenta;
+                break;
+            case 4:
+                newColor = Color.green;
+                break;
+            case 5:
+                newColor = Color.yellow;
+                break;
+            case 6:
+                newColor = Color.white;
+                break;
+        }
+        return newColor;
+    }
 }

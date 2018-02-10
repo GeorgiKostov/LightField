@@ -14,6 +14,9 @@ public class VizController : MonoBehaviour
     public GameObject Shape_Circle;
     public GameObject Particles_1;
     public GameObject Particles_2;
+    public GameObject AnimTex1;
+    public GameObject AnimTex2;
+    public GameObject AnimTex3;
     public GameObject Rainbow;
     public bool Randomize = true;
     public float randomTime = 10f;
@@ -39,6 +42,30 @@ public class VizController : MonoBehaviour
         part.GetComponent<ParticleController>().InitShape(Utilities.RandomFloat(-2f, 2f), 30f);
     }
 
+    void SpawnAnimTex1()
+    {
+        GameObject part = Instantiate(AnimTex1, transform.position, Quaternion.identity);
+        part.GetComponent<ChangeColor>().Init(Utilities.RandomFloat(8, 25f), Utilities.RandomFloat(15, 25));
+        part.GetComponent<ScrollTexture>().Init(Utilities.RandomFloat(10, 25));
+        part.transform.rotation = Quaternion.Euler(new Vector3(-90f, 0, 0));
+    }
+    void SpawnAnimTex2()
+    {
+        GameObject part = Instantiate(AnimTex2, transform.position, Quaternion.identity);
+        part.GetComponent<ChangeColor>().Init(Utilities.RandomFloat(8, 25f), Utilities.RandomFloat(15, 25));
+        part.GetComponent<ScrollTexture>().Init(Utilities.RandomFloat(10, 25));
+        part.transform.rotation = Quaternion.Euler(new Vector3(-90f, 0, 0));
+
+    }
+    void SpawnAnimTex3()
+    {
+        GameObject part = Instantiate(AnimTex3, transform.position, Quaternion.identity);
+        part.GetComponent<ChangeColor>().Init(Utilities.RandomFloat(8, 25f), Utilities.RandomFloat(15, 25));
+        part.GetComponent<ScrollTexture>().Init(Utilities.RandomFloat(10, 25));
+        part.transform.rotation = Quaternion.Euler(new Vector3(-90f, 0, 0));
+
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q))
@@ -47,6 +74,18 @@ public class VizController : MonoBehaviour
             CircleCounterClock();
         if (Input.GetKeyDown(KeyCode.E))
             ClockPattern();
+        if (Input.GetKeyDown(KeyCode.R))
+            SceneManager.LoadScene(0);
+        if (Input.GetKeyDown(KeyCode.T))
+            SpawnAnimTex1();
+        if (Input.GetKeyDown(KeyCode.Y))
+            SpawnAnimTex2();
+        if (Input.GetKeyDown(KeyCode.U))
+            SpawnAnimTex3();
+        //if (Input.GetKeyDown(KeyCode.I))
+        //    if (Input.GetKeyDown(KeyCode.O))
+        //        if (Input.GetKeyDown(KeyCode.P))
+
         if (Input.GetKeyDown(KeyCode.A))
             LeftRight();
         if (Input.GetKeyDown(KeyCode.S))
@@ -77,24 +116,21 @@ public class VizController : MonoBehaviour
             Init_Shape_Square_Anim2();
         if (Input.GetKeyDown(KeyCode.N))
             Init_Shape_Circle();
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            InitRandomize();
-        }
-        if (Input.GetKeyDown(KeyCode.F3))
+
+        if (Input.GetKeyDown(KeyCode.F1))
         {
             Randomize = false;
             CancelInvoke("ChooseEffect");
         }
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.F2))
         {
-            SceneManager.LoadScene(0);
+            InitRandomize();
         }
-        if (Input.GetKeyDown(KeyCode.F1))
+        if (Input.GetKeyDown(KeyCode.F7))
         {
             randomTime += 1;
         }
-        if (Input.GetKeyDown(KeyCode.F2))
+        if (Input.GetKeyDown(KeyCode.F6))
         {
             randomTime -= 1;
         }
@@ -168,40 +204,60 @@ public class VizController : MonoBehaviour
             case 16:
                 InitBeamY();
                 break;
+            case 17:
+                SpawnRainbow();
+                break;
+            case 18:
+                SpawnAnimTex1();
+                break;
+            case 19:
+                SpawnAnimTex2();
+                break;
+            case 20:
+                SpawnAnimTex3();
+                break;
+            case 21:
+                break;
+            case 22:
+                break;
+            case 23:
+                break;
+            case 24:
+                break;
         }
     }
 
     void Init_Shape_Square_Anim1()
     {
         GameObject beam = Instantiate(Shape_Square, transform.position, Quaternion.identity);
-        beam.GetComponent<Shape_Square>().InitShape(global::Shape_Square.SquareAnim.Anim1, Utilities.RandomFloat(.5f, 1.2f), 60f);
+        beam.GetComponent<Shape_Square>().InitShape(global::Shape_Square.SquareAnim.Anim1, Utilities.RandomFloat(.5f, 1.2f), Utilities.RandomFloat(10, 30));
     }
 
     void Init_Shape_Square_Anim2()
     {
         GameObject beam = Instantiate(Shape_Square, transform.position, Quaternion.identity);
-        beam.GetComponent<Shape_Square>().InitShape(global::Shape_Square.SquareAnim.Anim2, Utilities.RandomFloat(.5f, 1.2f), 60f);
+        beam.GetComponent<Shape_Square>().InitShape(global::Shape_Square.SquareAnim.Anim2, Utilities.RandomFloat(.5f, 1.2f), Utilities.RandomFloat(10, 30));
     }
     void Init_Shape_Circle()
     {
         GameObject beam = Instantiate(Shape_Circle, transform.position, Quaternion.identity);
-        beam.GetComponent<Shape_Circle>().InitShape(Utilities.RandomFloat(.5f, 1.2f), 45f);
+        beam.GetComponent<Shape_Circle>().InitShape(Utilities.RandomFloat(.5f, 1.2f), Utilities.RandomFloat(10, 30));
     }
     void InitColorBalls()
     {
         GameObject beam = Instantiate(ColorBalls, transform.position, Quaternion.identity);
-        beam.GetComponent<AnimateColor>().InitBalls(AnimateColor.ColorType.Normal, 1f, 10f);
+        beam.GetComponent<AnimateColor>().InitBalls(AnimateColor.ColorType.Normal, Utilities.RandomFloat(25, 65), Utilities.RandomFloat(10, 20));
     }
 
     void InitBeamX()
     {
         GameObject beam = Instantiate(Beam, transform.position, Quaternion.identity);
-        beam.GetComponent<Beam>().InitBeam(global::Beam.BeamType.BeamX, Utilities.RandomFloat(0.5f, 1.5f), 10f);
+        beam.GetComponent<Beam>().InitBeam(global::Beam.BeamType.BeamX, Utilities.RandomFloat(0.5f, 1.5f), 5f);
     }
     void InitBeamY()
     {
         GameObject beam = Instantiate(Beam, transform.position, Quaternion.identity);
-        beam.GetComponent<Beam>().InitBeam(global::Beam.BeamType.BeamY, Utilities.RandomFloat(0.5f, 1.5f), 10f);
+        beam.GetComponent<Beam>().InitBeam(global::Beam.BeamType.BeamY, Utilities.RandomFloat(0.5f, 1.5f), 5f);
     }
 
     void CircleClockwise()

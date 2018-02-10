@@ -7,7 +7,7 @@ public class AnimateColor : MonoBehaviour
 
     public GameObject[] ColorSpheres;
     public Material ColorChanger;
-
+    public float Speed = 25f;
     public enum ColorType
     {
         Normal, Blue, Green
@@ -26,14 +26,14 @@ public class AnimateColor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        transform.Rotate(Vector3.forward, Time.deltaTime * Speed);
     }
     void Audio_Color_RandomBand()
     {
         for (int i = 0; i < ColorSpheres.Length; i++)
         {
 
-            ColorSpheres[i].GetComponent<Renderer>().material.color = new Color(AudioManager.FreqBand[Utilities.RandomInt(0, 8)], AudioManager.FreqBand[Utilities.RandomInt(0, 8)], AudioManager.FreqBand[Utilities.RandomInt(0, 8)]);
+            ColorSpheres[i].GetComponent<Renderer>().material.color = Utilities.GetRandomColor();
         }
     }
     void Audio_Color_Green()
@@ -41,7 +41,7 @@ public class AnimateColor : MonoBehaviour
         for (int i = 0; i < ColorSpheres.Length; i++)
         {
 
-            ColorSpheres[i].GetComponent<Renderer>().material.color = new Color(AudioManager.FreqBand[Utilities.RandomInt(0, 8)], 1, 0);
+            ColorSpheres[i].GetComponent<Renderer>().material.color = Utilities.GetRandomColor();
         }
     }
 
@@ -58,6 +58,7 @@ public class AnimateColor : MonoBehaviour
 
                 break;
         }
+        Speed = speed;
         Invoke("Kill", kill);
 
     }
